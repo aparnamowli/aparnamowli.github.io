@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aparna Chandramowlishwaran</title>
+  <link rel="icon" href="https://communications.uci.edu/images/logos/uci/uci-favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://communications.uci.edu/images/logos/uci/uci-favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
@@ -62,9 +64,10 @@
     /* ── Header ── */
     .header {
       display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: 160px 1fr 180px;
+      gap: 2rem;
+      margin-bottom: 1.25rem;
+      align-items: start;
     }
 
     .photo img {
@@ -91,24 +94,30 @@
     .header-links a:hover { color: #900; }
     .header-links span { color: #ccc; margin: 0 0.3rem; }
 
-    .communities {
-      font-size: 0.88rem;
-      margin-bottom: 1rem;
+    .affiliations {
+      font-size: 0.85rem;
+      padding-top: 0.2rem;
     }
-    .communities strong {
+    .affiliations strong {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #444;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
-    .communities ul {
+    .affiliations ul {
       list-style: disc;
-      margin-left: 1.4rem;
-      line-height: 1.7;
+      margin-left: 1.1rem;
+      line-height: 1.75;
       color: #333;
     }
+    .affiliations ul li { font-size: 0.83rem; }
 
+    .bio {
+      margin-bottom: 2.5rem;
+    }
     .bio p {
       font-size: 0.93rem; color: #333; line-height: 1.7; margin-bottom: 0.5rem;
     }
@@ -219,9 +228,10 @@
       font-size: 0.8rem; color: #aaa;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       .header { grid-template-columns: 1fr; }
       .photo-placeholder, .photo img { width: 120px; height: 150px; }
+      .affiliations { border-top: 1px solid #eee; padding-top: 1rem; }
       .talks-videos { grid-template-columns: 1fr; }
       .pub-thumb { display: none; }
       nav ul li a { padding: 0.6rem 0.6rem; font-size: 0.78rem; }
@@ -246,10 +256,14 @@
 
   <!-- ── Header / Home ── -->
   <div class="header" id="home">
+
+    <!-- Col 1: Photo -->
     <div class="photo">
       <div class="photo-placeholder">photo<br/>goes here</div>
       <!-- <img src="images/aparna.jpg" alt="Aparna Chandramowlishwaran" /> -->
     </div>
+
+    <!-- Col 2: Name, meta, links only -->
     <div class="header-text">
       <h1>Aparna Chandramowlishwaran</h1>
       <div class="header-meta">
@@ -266,30 +280,35 @@
         <span>/</span>
         <a href="https://engineering.uci.edu/users/aparna-chandramowlishwaran" target="_blank">UCI Profile</a>
       </div>
-      <div class="communities">
-        <strong>Research Communities</strong>
-        <ul>
-          <li><a href="https://properai.eng.uci.edu" target="_blank">ProperAI, UC Irvine</a></li>
-          <li><a href="https://ml4heat.uci.edu" target="_blank">ML4Heat MURI</a></li>
-          <li><a href="https://eecs.uci.edu" target="_blank">UCI EECS</a></li>
-        </ul>
-      </div>
-      <div class="bio">
-        <p>
-          I am an Associate Professor in the <a href="https://eecs.uci.edu">Department of Electrical Engineering and Computer Science</a>
-          at <a href="https://uci.edu">UC Irvine</a>, where I lead the <a href="https://hpcforge.eng.uci.edu">HPCForge</a> lab.
-          Before joining UCI, I was a Research Scientist at <a href="https://www.csail.mit.edu/">MIT CSAIL</a>.
-          I received my Ph.D. from <a href="https://www.gatech.edu/">Georgia Tech</a> in 2013,
-          advised by <a href="http://vuduc.org/">Richard Vuduc</a>.
-        </p>
-        <p>
-          <a href="javascript:toggleRecruit()">Here is some information for prospective students and visitors.</a>
-        </p>
-        <div id="recruit-info">
-          <p>I am always looking for motivated PhD students and postdocs interested in scientific machine learning and high-performance computing. Please email your CV and one representative publication (if any) to amowli [at] uci [dot] edu.</p>
-          <p>Prospective PhD students: please apply through the UCI EECS system and list me as a potential advisor. There is no need to contact me separately unless you have a specific research question to discuss.</p>
-        </div>
-      </div>
+    </div>
+
+    <!-- Col 3: Research Affiliations -->
+    <div class="affiliations">
+      <strong>Research Affiliations</strong>
+      <ul>
+        <li><a href="https://properai.eng.uci.edu" target="_blank">ProperAI, UC Irvine</a></li>
+        <li><a href="https://ml4heat.uci.edu" target="_blank">ML4Heat MURI</a></li>
+        <li><a href="https://eecs.uci.edu" target="_blank">UCI EECS</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bio — full width below the header grid -->
+  <div class="bio">
+    <p>
+      I am an Associate Professor in the <a href="https://eecs.uci.edu">Department of Electrical Engineering and Computer Science</a>
+      at <a href="https://uci.edu">UC Irvine</a>, where I lead the <a href="https://hpcforge.eng.uci.edu">HPCForge</a> lab.
+      Before joining UCI, I was a Research Scientist at <a href="https://www.csail.mit.edu/">MIT CSAIL</a>.
+      I received my Ph.D. from <a href="https://www.gatech.edu/">Georgia Tech</a> in 2013,
+      advised by <a href="http://vuduc.org/">Richard Vuduc</a>.
+    </p>
+    <p>
+      <a href="javascript:toggleRecruit()">Here is some information for prospective students and visitors.</a>
+    </p>
+    <div id="recruit-info">
+      <p>I am always looking for motivated PhD students and postdocs interested in scientific machine learning and high-performance computing. Please email your CV and one representative publication (if any) to amowli [at] uci [dot] edu.</p>
+      <p>Prospective PhD students: please apply through the UCI EECS system and list me as a potential advisor. There is no need to contact me separately unless you have a specific research question to discuss.</p>
     </div>
   </div>
 
