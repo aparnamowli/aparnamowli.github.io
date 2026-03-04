@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aparna Chandramowlishwaran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #222;
+      background: #fff;
+    }
+
+    a { color: #900; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Sticky nav (Yoonjin style) ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 100;
+      padding: 0 2rem;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    nav ul li a {
+      display: block;
+      padding: 0.75rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #555;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #900;
+      border-bottom-color: #900;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 2rem 80px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .photo img {
+      width: 160px;
+      display: block;
+    }
+    .photo-placeholder {
+      width: 160px; height: 200px;
+      background: #eee;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: #999; text-align: center; padding: 1rem;
+    }
+
+    .header-text h1 {
+      font-size: 1.9rem; font-weight: 700; margin-bottom: 0.4rem;
+    }
+    .header-meta {
+      font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 0.75rem;
+    }
+    .header-links {
+      font-size: 0.88rem; margin-bottom: 1rem;
+    }
+    .header-links a { color: #555; }
+    .header-links a:hover { color: #900; }
+    .header-links span { color: #ccc; margin: 0 0.3rem; }
+
+    .communities {
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+    }
+    .communities strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 0.3rem;
+    }
+    .communities ul {
+      list-style: disc;
+      margin-left: 1.4rem;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .bio p {
+      font-size: 0.93rem; color: #333; line-height: 1.7; margin-bottom: 0.5rem;
+    }
+
+    #recruit-info { display: none; margin-top: 0.4rem; }
+    #recruit-info p { margin-bottom: 0.4rem; }
+
+    /* ── Section titles ── */
+    h3 {
+      font-size: 1.1rem; font-weight: 700;
+      margin: 2.5rem 0 0.75rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #ddd;
+    }
+    p { font-size: 0.93rem; color: #333; line-height: 1.7; margin-bottom: 0.6rem; }
+
+    /* ── Research ── */
+    .research p { margin-bottom: 0.7rem; }
+    .research ul {
+      margin: 0.4rem 0 0.7rem 1.5rem;
+      font-size: 0.93rem; color: #333; line-height: 1.7;
+    }
+    .research ul li { margin-bottom: 0.25rem; }
+
+    /* ── Group ── */
+    .group-sub {
+      font-size: 0.88rem; font-weight: 700; color: #555;
+      margin: 1rem 0 0.3rem;
+    }
+    .group ul {
+      list-style: disc; margin-left: 1.5rem;
+      font-size: 0.92rem; color: #333; line-height: 1.8;
+    }
+
+    /* ── Talks — three video thumbnails (Jiajun style) ── */
+    .talks-videos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .talk-video { font-size: 0.82rem; }
+    .talk-video iframe {
+      width: 100%; aspect-ratio: 16/9;
+      border: none; display: block; margin-bottom: 0.4rem;
+    }
+    .talk-video-title {
+      font-weight: 700; color: #222; margin-bottom: 0.1rem; line-height: 1.35;
+    }
+    .talk-video-meta { color: #777; font-size: 0.78rem; }
+
+    /* ── Teaching ── */
+    .teaching-list { font-size: 0.92rem; }
+    .teaching-list li {
+      list-style: none;
+      margin-bottom: 0.3rem;
+      color: #333;
+    }
+    .teaching-list li a { color: #900; }
+
+    /* ── Publications ── */
+    .pub-controls {
+      font-size: 0.88rem; color: #555; margin-bottom: 1rem;
+    }
+    .pub-controls a { color: #555; cursor: pointer; }
+    .pub-controls a:hover { color: #900; text-decoration: none; }
+    .pub-controls a.active { color: #900; font-weight: 700; text-decoration: none; }
+
+    .pub-year {
+      font-size: 0.88rem; font-weight: 700; color: #888;
+      margin: 1.3rem 0 0.5rem;
+    }
+
+    .pub-item {
+      display: flex; gap: 1rem;
+      margin-bottom: 1.1rem; align-items: flex-start;
+    }
+    .pub-thumb {
+      width: 80px; height: 60px; flex-shrink: 0;
+      background: #f0f0f0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; overflow: hidden;
+    }
+    .pub-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .pub-body { flex: 1; font-size: 0.88rem; line-height: 1.55; }
+    .pub-title { font-weight: 700; color: #222; margin-bottom: 0.12rem; }
+    .pub-authors { color: #555; margin-bottom: 0.12rem; }
+    .pub-authors em { font-style: normal; font-weight: 700; color: #333; }
+    .pub-venue { color: #555; margin-bottom: 0.18rem; }
+    .pub-venue strong { color: #222; }
+    .pub-badge {
+      display: inline-block; font-size: 0.7rem;
+      padding: 0.05rem 0.4rem;
+      background: #900; color: white; border-radius: 2px;
+      margin-left: 0.3rem; font-weight: 700; vertical-align: middle;
+    }
+    .pub-links a {
+      color: #900; font-weight: 700; margin-right: 0.6rem; font-size: 0.88rem;
+    }
+
+    .pub-section { display: none; }
+    .pub-section.active { display: block; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 3rem; padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.8rem; color: #aaa;
+    }
+
+    @media (max-width: 640px) {
+      .header { grid-template-columns: 1fr; }
+      .photo-placeholder, .photo img { width: 120px; height: 150px; }
+      .talks-videos { grid-template-columns: 1fr; }
+      .pub-thumb { display: none; }
+      nav ul li a { padding: 0.6rem 0.6rem; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky Nav ── -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#group">Group</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#publications">Publications</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- ── Header / Home ── -->
+  <div class="header" id="home">
+    <div class="photo">
+      <div class="photo-placeholder">photo<br/>goes here</div>
+      <!-- <img src="images/aparna.jpg" alt="Aparna Chandramowlishwaran" /> -->
+    </div>
+    <div class="header-text">
+      <h1>Aparna Chandramowlishwaran</h1>
+      <div class="header-meta">
+        Associate Professor, <a href="https://eecs.uci.edu">Electrical Engineering &amp; Computer Science</a><br/>
+        University of California, Irvine<br/>
+        Engineering Hall 4120 &nbsp;·&nbsp; amowli [at] uci [dot] edu
+      </div>
+      <div class="header-links">
+        <a href="https://scholar.google.com/citations?user=7ASJ6JoAAAAJ" target="_blank">Google Scholar</a>
+        <span>/</span>
+        <a href="https://github.com/HPCForge" target="_blank">GitHub</a>
+        <span>/</span>
+        <a href="https://hpcforge.eng.uci.edu/files/Aparna_CV.pdf" target="_blank">CV</a>
+        <span>/</span>
+        <a href="https://engineering.uci.edu/users/aparna-chandramowlishwaran" target="_blank">UCI Profile</a>
+      </div>
+      <div class="communities">
+        <strong>Research Communities</strong>
+        <ul>
+          <li><a href="https://properai.eng.uci.edu" target="_blank">ProperAI, UC Irvine</a></li>
+          <li><a href="https://ml4heat.uci.edu" target="_blank">ML4Heat MURI</a></li>
+          <li><a href="https://eecs.uci.edu" target="_blank">UCI EECS</a></li>
+        </ul>
+      </div>
+      <div class="bio">
+        <p>
+          I am an Associate Professor in the <a href="https://eecs.uci.edu">Department of Electrical Engineering and Computer Science</a>
+          at <a href="https://uci.edu">UC Irvine</a>, where I lead the <a href="https://hpcforge.eng.uci.edu">HPCForge</a> lab.
+          Before joining UCI, I was a Research Scientist at <a href="https://www.csail.mit.edu/">MIT CSAIL</a>.
+          I received my Ph.D. from <a href="https://www.gatech.edu/">Georgia Tech</a> in 2013,
+          advised by <a href="http://vuduc.org/">Richard Vuduc</a>.
+        </p>
+        <p>
+          <a href="javascript:toggleRecruit()">Here is some information for prospective students and visitors.</a>
+        </p>
+        <div id="recruit-info">
+          <p>I am always looking for motivated PhD students and postdocs interested in scientific machine learning and high-performance computing. Please email your CV and one representative publication (if any) to amowli [at] uci [dot] edu.</p>
+          <p>Prospective PhD students: please apply through the UCI EECS system and list me as a potential advisor. There is no need to contact me separately unless you have a specific research question to discuss.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Research ── -->
+  <div class="research" id="research">
+    <h3>Research</h3>
+    <p>
+      My group works at the intersection of scientific machine learning and high-performance computing —
+      building systems that make large-scale scientific simulation faster, more generalizable, and deployable
+      in the real world. A central question we ask: what does it take to replace or accelerate a physics
+      simulation with a learned model, and how do we scale that to the hardest problems in science?
+    </p>
+    <p>
+      We approach this from two directions simultaneously. On the learning side, we develop neural PDE solvers,
+      transformer surrogates, and generalist models that learn shared physical structure across conditions and domains.
+      On the systems side, we build the HPC infrastructure — scalable algorithms, domain decomposition strategies,
+      and GPU kernels — needed to make training and inference practical at scale.
+      Representative projects include <a href="https://github.com/HPCForge/BubbleML">BubbleML</a>,
+      <a href="https://arxiv.org/abs/2507.21244">Bubbleformer</a>,
+      <a href="https://arxiv.org/abs/2308.14258">ScalablePINNs</a>, and
+      <a href="https://arxiv.org/abs/2104.10873">Mosaic Flows</a>.
+    </p>
+    <p>We simultaneously explore these ideas across scientific domains:</p>
+    <ul>
+      <li>thermal-fluids and multiphase flow — boiling, nucleation, and phase change heat transfer,
+        as in <a href="https://github.com/HPCForge/BubbleML">BubbleML</a> and <a href="https://arxiv.org/abs/2507.21244">Bubbleformer</a>;</li>
+      <li>neural solvers for PDEs on complex and unseen domains,
+        as in <a href="https://arxiv.org/abs/2104.10873">Mosaic Flows</a> and <a href="https://arxiv.org/abs/2308.14258">ScalablePINNs</a>;</li>
+      <li>turbulent flow simulation and super-resolution with transfer learning, as in CFDNet and SURFNet;</li>
+      <li>scalable parallel algorithms and communication for MPI+Threads and GPU-accelerated systems.</li>
+    </ul>
+  </div>
+
+  <!-- ── Group ── -->
+  <div id="group">
+    <h3>Group</h3>
+
+    <div class="group-sub">PhD Students</div>
+    <ul class="group ul">
+      <li>Arthur Feeney</li>
+      <li>Zitong Li</li>
+      <li>Sheikh Md Shakeel Hassan</li>
+      <li>Xianwei Zou</li>
+      <li>Kuei-Hsiang Huang</li>
+    </ul>
+
+    <div class="group-sub">Alumni</div>
+    <ul class="group ul">
+      <li>Srikar Arani (MS 2024) <!-- current position --></li>
+      <li>Sebastian Barschkis (MS 2023) <!-- current position --></li>
+      <li>Octavi Obiols Sales (PhD 2022) <!-- current position --></li>
+      <li>Hengjie Wang (PhD 2021) <!-- current position --></li>
+      <li>Behnam Pourghassemi (PhD 2021) <!-- current position --></li>
+      <li>Shu-Mei Tseng (MS 2021) <!-- current position --></li>
+      <li>Rohit Zambre (PhD 2020) <!-- current position --></li>
+      <li>Laleh Aghababaie Beni (PhD 2019) <!-- current position --></li>
+      <li>Bahareh Mostafazadeh Davani (MS 2016) <!-- current position --></li>
+      <li>Ferran Marti (Postdoc 2017–2018) <!-- current position --></li>
+    </ul>
+    <p style="font-size:0.82rem;color:#aaa;margin-top:0.5rem">
+      <!-- Fill in current positions for alumni — format: Name (degree year), Current Role, Organization -->
+    </p>
+  </div>
+
+  <!-- ── Talks ── -->
+  <div id="talks">
+    <h3>Talks</h3>
+
+    <!-- Three embedded videos, Jiajun style -->
+    <div class="talks-videos">
+
+      <div class="talk-video">
+        <iframe
+          src="https://www.youtube.com/embed/Bz0k-BnRk48"
+          title="Transferable Deep Learning Surrogates for PDEs"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="talk-video-title">Transferable Deep Learning Surrogates for Solving PDEs</div>
+        <div class="talk-video-meta">ETH Zürich SPCL_Bcast, May 2021</div>
+      </div>
+
+      <div class="talk-video">
+        <!-- Replace with actual video embed if available -->
+        <iframe
+          src="https://www.youtube.com/embed/Wm21as_e6PA"
+          title="CFDNet talk"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="talk-video-title">CFDNet — A Deep Learning-Based Accelerator for Fluid Simulations</div>
+        <div class="talk-video-meta">ACM ICS, Jul 2020</div>
+      </div>
+
+      <div class="talk-video">
+        <iframe
+          src="https://www.youtube.com/embed/FKh5b65YMaE"
+          title="On the Limits of Parallelizing CNNs on GPUs"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="talk-video-title">On the Limits of Parallelizing Convolutional Neural Networks on GPUs</div>
+        <div class="talk-video-meta">ACM SPAA, Jul 2020</div>
+      </div>
+
+    </div>
+
+    <!-- Additional selected talks as text -->
+    <ul style="list-style:disc;margin-left:1.5rem;font-size:0.92rem;color:#333;line-height:1.8;">
+      <li>Domain Decomposition Methods for Neural PDE Solvers. <a href="https://www.siam.org/conferences/cm/conference/pp24" target="_blank">SIAM PP24</a>, Baltimore, Mar 2024.</li>
+      <li>Accelerating Turbulent Fluid Simulations. Keynote, PMAM (co-held with PPoPP), San Diego, Feb 2020.</li>
+      <li>AI-enhanced Turbulent Flow Simulations. NSF Frontera Workshop, Austin, Jan 2020.</li>
+      <li>Invited Panelist, AI and Machine Learning for Scientific Applications (AI4S at SC), Nov 2020.</li>
+      <li>Fast Algorithms at Exascale and Beyond. University of Chicago · IBM T.J. Watson · Tokyo University, Fall 2012.</li>
+    </ul>
+  </div>
+
+  <!-- ── Teaching ── -->
+  <div id="teaching">
+    <h3>Teaching</h3>
+    <ul class="teaching-list">
+      <li><a href="#" target="_blank">EECS 114: Introduction to Data Structures and Algorithms</a>, UCI, 2023–present</li>
+      <li>EECS 221 / 224: High-Performance Computing, UCI, W15, S16, S17, W18</li>
+      <li>EECS 117: Parallel Computer Systems, UCI, S15, W16, W17, W18</li>
+      <li>6.172: Performance Engineering of Software Systems, MIT, 2013–2014</li>
+    </ul>
+  </div>
+
+  <!-- ── Publications ── -->
+  <div id="publications">
+    <h3>Publications</h3>
+
+    <div class="pub-controls">
+      Show:
+      <a href="#" class="active" onclick="showPubs('selected',this);return false;">selected</a> /
+      <a href="#" onclick="showPubs('all',this);return false;">all by year</a>
+      &nbsp;&nbsp;
+      <a href="https://scholar.google.com/citations?user=7ASJ6JoAAAAJ" target="_blank">Google Scholar</a>
+    </div>
+
+    <!-- SELECTED -->
+    <div id="pubs-selected" class="pub-section active">
+
+      <div class="pub-item">
+        <div class="pub-thumb">🫧</div>
+        <div class="pub-body">
+          <div class="pub-title">Bubbleformer: Forecasting Boiling with Transformers</div>
+          <div class="pub-authors">S. M. S. Hassan, X. Zou, A. Dhruv, V. Ganesan, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue">arXiv, 2025</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2507.21244" target="_blank">Paper</a>
+            <a href="https://github.com/HPCForge/Bubbleformer" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🫧</div>
+        <div class="pub-body">
+          <div class="pub-title">BubbleML: A Multiphase Multiphysics Dataset and Benchmarks for Machine Learning <span class="pub-badge">Spotlight</span></div>
+          <div class="pub-authors">S. M. S. Hassan, A. Feeney, A. Dhruv, J. Kim, Y. Suh, J. Ryu, Y. Won, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>NeurIPS</strong> Datasets &amp; Benchmarks, 2023</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2307.14623.pdf" target="_blank">Paper</a>
+            <a href="https://github.com/HPCForge/BubbleML" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🔥</div>
+        <div class="pub-body">
+          <div class="pub-title">Recent Progress of Artificial Intelligence for Liquid-Vapor Phase Change Heat Transfer</div>
+          <div class="pub-authors">Y. Suh, <em>A. Chandramowlishwaran</em>, Y. Won</div>
+          <div class="pub-venue"><strong>npj Computational Materials</strong>, 2024</div>
+          <div class="pub-links">
+            <a href="https://www.nature.com/articles/s41524-024-01223-8" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🌊</div>
+        <div class="pub-body">
+          <div class="pub-title">Breaking Boundaries: Distributed Domain Decomposition with Scalable Physics-Informed Neural PDE Solvers</div>
+          <div class="pub-authors">A. Feeney, Z. Li, R. Bostanabad, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>SC</strong>, 2023</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2308.14258.pdf" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🌀</div>
+        <div class="pub-body">
+          <div class="pub-title">Mosaic Flows: A Transferable Deep Learning Framework for Solving PDEs on Unseen Domains</div>
+          <div class="pub-authors">H. Wang, R. Planas, <em>A. Chandramowlishwaran</em>, R. Bostanabad</div>
+          <div class="pub-venue"><strong>Computer Methods in Applied Mechanics and Engineering</strong>, 2022</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2104.10873" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🌀</div>
+        <div class="pub-body">
+          <div class="pub-title">CFDNet: A Deep Learning-Based Accelerator for Fluid Simulations</div>
+          <div class="pub-authors">O. Obiols-Sales, A. Vishnu, N. Malaya, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ICS</strong>, 2020</div>
+          <div class="pub-links">
+            <a href="https://dl.acm.org/doi/10.1145/3392717.3392772" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">🏆</div>
+        <div class="pub-body">
+          <div class="pub-title">Petascale Direct Numerical Simulation of Blood Flow on 200k Cores and Heterogeneous Architectures <span class="pub-badge">Gordon Bell Prize</span></div>
+          <div class="pub-authors">A. Rahimian, I. Lashuk, ..., <em>A. Chandramowlishwaran</em>, ..., G. Biros</div>
+          <div class="pub-venue"><strong>SC</strong>, 2010</div>
+          <div class="pub-links">
+            <a href="https://dl.acm.org/doi/10.1109/SC.2010.42" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb">⚡</div>
+        <div class="pub-body">
+          <div class="pub-title">Performance Evaluation of Concurrent Collections on High-Performance Multicore Computing Systems <span class="pub-badge">Best Paper</span></div>
+          <div class="pub-authors"><em>A. Chandramowlishwaran</em>, K. Knobe, R. Vuduc</div>
+          <div class="pub-venue"><strong>IPDPS</strong>, 2010</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ALL BY YEAR -->
+    <div id="pubs-all" class="pub-section">
+
+      <div class="pub-year">2025</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🫧</div>
+        <div class="pub-body">
+          <div class="pub-title">Bubbleformer: Forecasting Boiling with Transformers</div>
+          <div class="pub-authors">S. M. S. Hassan, X. Zou, A. Dhruv, V. Ganesan, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue">arXiv, 2025</div>
+          <div class="pub-links"><a href="https://arxiv.org/abs/2507.21244" target="_blank">Paper</a> <a href="https://github.com/HPCForge/Bubbleformer" target="_blank">Project Page</a></div>
+        </div>
+      </div>
+
+      <div class="pub-year">2024</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔥</div>
+        <div class="pub-body">
+          <div class="pub-title">Recent Progress of Artificial Intelligence for Liquid-Vapor Phase Change Heat Transfer</div>
+          <div class="pub-authors">Y. Suh, <em>A. Chandramowlishwaran</em>, Y. Won</div>
+          <div class="pub-venue"><strong>npj Computational Materials</strong>, 2024</div>
+          <div class="pub-links"><a href="https://www.nature.com/articles/s41524-024-01223-8" target="_blank">Paper</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">⚡</div>
+        <div class="pub-body">
+          <div class="pub-title">BERN-NN-IBF: Enhancing Neural Network Bound Propagation Through Implicit Bernstein Form and Optimized Tensor Operations</div>
+          <div class="pub-authors">W. Fatnassi, A. Feeney, <em>A. Chandramowlishwaran</em>, Y. Shoukry</div>
+          <div class="pub-venue"><strong>IEEE TCAD</strong>, 2024</div>
+          <div class="pub-links"><a href="https://ieeexplore.ieee.org/document/10745795" target="_blank">Paper</a></div>
+        </div>
+      </div>
+
+      <div class="pub-year">2023</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🫧</div>
+        <div class="pub-body">
+          <div class="pub-title">BubbleML: A Multiphase Multiphysics Dataset and Benchmarks for Machine Learning <span class="pub-badge">Spotlight</span></div>
+          <div class="pub-authors">S. M. S. Hassan, A. Feeney, A. Dhruv, J. Kim, Y. Suh, J. Ryu, Y. Won, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>NeurIPS</strong> Datasets &amp; Benchmarks, 2023</div>
+          <div class="pub-links"><a href="https://arxiv.org/pdf/2307.14623.pdf" target="_blank">Paper</a> <a href="https://github.com/HPCForge/BubbleML" target="_blank">Project Page</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌊</div>
+        <div class="pub-body">
+          <div class="pub-title">Breaking Boundaries: Distributed Domain Decomposition with Scalable Physics-Informed Neural PDE Solvers</div>
+          <div class="pub-authors">A. Feeney, Z. Li, R. Bostanabad, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>SC</strong>, 2023</div>
+          <div class="pub-links"><a href="https://arxiv.org/pdf/2308.14258.pdf" target="_blank">Paper</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🕸️</div>
+        <div class="pub-body">
+          <div class="pub-title">ADARNet: Deep Learning Predicts Adaptive Mesh Refinement</div>
+          <div class="pub-authors">O. Obiols-Sales, A. Vishnu, N. Malaya, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ICPP</strong>, 2023</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2022</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌀</div>
+        <div class="pub-body">
+          <div class="pub-title">Mosaic Flows: A Transferable Deep Learning Framework for Solving PDEs on Unseen Domains</div>
+          <div class="pub-authors">H. Wang, R. Planas, <em>A. Chandramowlishwaran</em>, R. Bostanabad</div>
+          <div class="pub-venue"><strong>Computer Methods in Applied Mechanics and Engineering</strong>, 2022</div>
+          <div class="pub-links"><a href="https://arxiv.org/abs/2104.10873" target="_blank">Paper</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔗</div>
+        <div class="pub-body">
+          <div class="pub-title">Lessons Learned on MPI+Threads Communication</div>
+          <div class="pub-authors">R. Zambre, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>SC</strong>, 2022</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2021</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌀</div>
+        <div class="pub-body">
+          <div class="pub-title">SURFNet: Super-Resolution of Turbulent Flows with Transfer Learning using Small Datasets</div>
+          <div class="pub-authors">O. Obiols-Sales, A. Vishnu, N. Malaya, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>PACT</strong>, 2021</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔧</div>
+        <div class="pub-body">
+          <div class="pub-title">Logically Parallel Communication for Fast MPI+Threads Applications</div>
+          <div class="pub-authors">R. Zambre, D. Sahasrabudhe, H. Zhou, M. Berzins, <em>A. Chandramowlishwaran</em>, P. Balaji</div>
+          <div class="pub-venue"><strong>IEEE TPDS</strong>, 2021</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌐</div>
+        <div class="pub-body">
+          <div class="pub-title">adPerf: Characterizing the Performance of Third-party Ads</div>
+          <div class="pub-authors">B. Pourghassemi, J. Bonecutter, Z. Li, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ACM SIGMETRICS</strong>, 2021</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔧</div>
+        <div class="pub-body">
+          <div class="pub-title">Demystifying Asynchronous I/O Interference in HPC Applications</div>
+          <div class="pub-authors">S.-M. Tseng, B. Nicolae, F. Cappello, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>IJHPCA</strong>, 2021</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2020</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌀</div>
+        <div class="pub-body">
+          <div class="pub-title">CFDNet: A Deep Learning-Based Accelerator for Fluid Simulations</div>
+          <div class="pub-authors">O. Obiols-Sales, A. Vishnu, N. Malaya, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ICS</strong>, 2020</div>
+          <div class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3392717.3392772" target="_blank">Paper</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">📐</div>
+        <div class="pub-body">
+          <div class="pub-title">Pencil: A Pipelined Algorithm for Distributed Stencils</div>
+          <div class="pub-authors">H. Wang, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>SC</strong>, 2020</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔧</div>
+        <div class="pub-body">
+          <div class="pub-title">On the Limits of Parallelizing Convolutional Neural Networks on GPUs</div>
+          <div class="pub-authors">B. Pourghassemi, C. Zhang, J. H. Lee, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>SPAA</strong>, 2020</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2019</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🌐</div>
+        <div class="pub-body">
+          <div class="pub-title">What-if Analysis of Page Load Time in Web Browsers using Causal Profiling</div>
+          <div class="pub-authors">B. Pourghassemi, A. A. Sani, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ACM SIGMETRICS (POMACS)</strong>, 2019</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔬</div>
+        <div class="pub-body">
+          <div class="pub-title">Portal: A High-Performance Language and Compiler for Parallel N-body Problems</div>
+          <div class="pub-authors">L. A. Beni, S. Ramanan, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>IPDPS</strong>, 2019</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2018</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔒</div>
+        <div class="pub-body">
+          <div class="pub-title">SUGAR: Secure GPU Acceleration in Web Browsers</div>
+          <div class="pub-authors">Z. Yao, Z. Ma, Y. Liu, A. A. Sani, <em>A. Chandramowlishwaran</em></div>
+          <div class="pub-venue"><strong>ASPLOS</strong>, 2018</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔗</div>
+        <div class="pub-body">
+          <div class="pub-title">Scalable Communication Endpoints for MPI+Threads Applications <span class="pub-badge">Best Poster</span></div>
+          <div class="pub-authors">R. Zambre, <em>A. Chandramowlishwaran</em>, P. Balaji</div>
+          <div class="pub-venue"><strong>ICPADS</strong>, 2018</div>
+        </div>
+      </div>
+
+      <div class="pub-year">2012 and earlier</div>
+      <div class="pub-item">
+        <div class="pub-thumb">🔬</div>
+        <div class="pub-body">
+          <div class="pub-title">A Massively Parallel Adaptive Fast Multipole Method on Heterogeneous Architectures</div>
+          <div class="pub-authors">I. Lashuk, <em>A. Chandramowlishwaran</em>, H. Langston, et al.</div>
+          <div class="pub-venue"><strong>CACM</strong>, 2012 &nbsp;·&nbsp; SC09 Best Paper Finalist</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">🏆</div>
+        <div class="pub-body">
+          <div class="pub-title">Petascale Direct Numerical Simulation of Blood Flow on 200k Cores and Heterogeneous Architectures <span class="pub-badge">Gordon Bell Prize</span></div>
+          <div class="pub-authors">A. Rahimian, I. Lashuk, ..., <em>A. Chandramowlishwaran</em>, ..., G. Biros</div>
+          <div class="pub-venue"><strong>SC</strong>, 2010</div>
+          <div class="pub-links"><a href="https://dl.acm.org/doi/10.1109/SC.2010.42" target="_blank">Paper</a></div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">⚡</div>
+        <div class="pub-body">
+          <div class="pub-title">Performance Evaluation of Concurrent Collections on High-Performance Multicore Computing Systems <span class="pub-badge">Best Paper</span></div>
+          <div class="pub-authors"><em>A. Chandramowlishwaran</em>, K. Knobe, R. Vuduc</div>
+          <div class="pub-venue"><strong>IPDPS</strong>, 2010</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-thumb">⚡</div>
+        <div class="pub-body">
+          <div class="pub-title">Optimizing and Tuning the Fast Multipole Method for State-of-the-Art Multicore Architectures</div>
+          <div class="pub-authors"><em>A. Chandramowlishwaran</em>, S. Williams, L. Oliker, I. Lashuk, G. Biros, R. Vuduc</div>
+          <div class="pub-venue"><strong>IPDPS</strong>, 2010</div>
+        </div>
+      </div>
+
+    </div><!-- /all -->
+  </div><!-- /publications -->
+
+  <footer>
+    <p>© Aparna Chandramowlishwaran · UC Irvine · Last updated March 2026</p>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  function showPubs(type, el) {
+    document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('pubs-' + type).classList.add('active');
+    document.querySelectorAll('.pub-controls a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function toggleRecruit() {
+    var el = document.getElementById('recruit-info');
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Highlight active nav link on scroll
+  const sections = ['home','research','group','talks','teaching','publications'];
+  const navLinks = {};
+  sections.forEach(id => {
+    navLinks[id] = document.querySelector('nav a[href="#' + id + '"]');
+  });
+
+  function onScroll() {
+    let current = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 80) current = id;
+    });
+    Object.values(navLinks).forEach(a => a && a.classList.remove('active'));
+    if (navLinks[current]) navLinks[current].classList.add('active');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>
