@@ -151,7 +151,7 @@
       font-size: 0.92rem; color: #333; line-height: 1.8;
     }
 
-    /* ── Talks — three video thumbnails (Jiajun style) ── */
+    /* ── Talks — three video thumbnails ── */
     .talks-videos {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -365,8 +365,30 @@
   <div id="talks">
     <h3>Talks</h3>
 
-    <!-- Three embedded videos, Jiajun style -->
+    <!-- Three embedded videos -->
     <div class="talks-videos">
+
+      <div class="talk-video">
+        <iframe
+          src="https://www.youtube.com/embed/HDYYeDomacM"
+          title="Unstructured Sparsity Meets Tensor Cores"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="talk-video-title">Unstructured Sparsity meets Tensor Cores: Lessons from Sparse Attention and MoE</div>
+        <div class="talk-video-meta">Oct 2025</div>
+      </div>
+
+      <div class="talk-video">
+        <iframe
+          src="https://player.vimeo.com/video/943465759"
+          title="Domain Decomposition Meets Neural Operator"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="talk-video-title">Domain Decomposition meets Neural Operator: AI4Science at Scale</div>
+        <div class="talk-video-meta">May 2024</div>
+      </div>
 
       <div class="talk-video">
         <iframe
@@ -376,42 +398,10 @@
           allowfullscreen>
         </iframe>
         <div class="talk-video-title">Transferable Deep Learning Surrogates for Solving PDEs</div>
-        <div class="talk-video-meta">ETH Zürich SPCL_Bcast, May 2021</div>
-      </div>
-
-      <div class="talk-video">
-        <!-- Replace with actual video embed if available -->
-        <iframe
-          src="https://www.youtube.com/embed/Wm21as_e6PA"
-          title="CFDNet talk"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-        <div class="talk-video-title">CFDNet — A Deep Learning-Based Accelerator for Fluid Simulations</div>
-        <div class="talk-video-meta">ACM ICS, Jul 2020</div>
-      </div>
-
-      <div class="talk-video">
-        <iframe
-          src="https://www.youtube.com/embed/FKh5b65YMaE"
-          title="On the Limits of Parallelizing CNNs on GPUs"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-        <div class="talk-video-title">On the Limits of Parallelizing Convolutional Neural Networks on GPUs</div>
-        <div class="talk-video-meta">ACM SPAA, Jul 2020</div>
+        <div class="talk-video-meta">May 2021</div>
       </div>
 
     </div>
-
-    <!-- Additional selected talks as text -->
-    <ul style="list-style:disc;margin-left:1.5rem;font-size:0.92rem;color:#333;line-height:1.8;">
-      <li>Domain Decomposition Methods for Neural PDE Solvers. <a href="https://www.siam.org/conferences/cm/conference/pp24" target="_blank">SIAM PP24</a>, Baltimore, Mar 2024.</li>
-      <li>Accelerating Turbulent Fluid Simulations. Keynote, PMAM (co-held with PPoPP), San Diego, Feb 2020.</li>
-      <li>AI-enhanced Turbulent Flow Simulations. NSF Frontera Workshop, Austin, Jan 2020.</li>
-      <li>Invited Panelist, AI and Machine Learning for Scientific Applications (AI4S at SC), Nov 2020.</li>
-      <li>Fast Algorithms at Exascale and Beyond. University of Chicago · IBM T.J. Watson · Tokyo University, Fall 2012.</li>
-    </ul>
   </div>
 
   <!-- ── Teaching ── -->
