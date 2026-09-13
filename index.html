@@ -1177,7 +1177,7 @@
   function showPubs(type, el) {
     document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
     document.getElementById('pubs-' + type).classList.add('active');
-    document.querySelectorAll('.pub-controls a').forEach(a => a.classList.remove('active'));
+    document.querySelectorAll('h3 span a').forEach(a => a.classList.remove('active'));
     el.classList.add('active');
   }
 
