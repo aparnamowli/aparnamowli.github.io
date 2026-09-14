@@ -232,11 +232,14 @@
     }
 
     @media (max-width: 700px) {
-      .header { grid-template-columns: 1fr; }
-      .photo-placeholder, .photo img { width: 120px; height: 150px; }
+      .header { display: flex; flex-direction: column; }
+      .photo { width: 160px; }
+      .photo img { width: 160px; height: auto; }
+      .photo-placeholder { width: 160px; height: 200px; }
       .affiliations { border-top: 1px solid #eee; padding-top: 1rem; }
       .talks-videos { grid-template-columns: 1fr; }
-      .pub-thumb { display: none; }
+      .pub-item { flex-direction: column; }
+      .pub-thumb { width: 100%; margin-bottom: 0.75rem; }
       nav ul li a { padding: 0.6rem 0.6rem; font-size: 0.78rem; }
     }
   </style>
